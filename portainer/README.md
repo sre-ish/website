@@ -1,10 +1,8 @@
-#########################################################
 # DISCLAIMER:                                           #
 # This README file provides information regarding       #
 # the bash script PORTAINER_DEPLOY.SH                   #
-#########################################################
 
-SECTION 1: BASIC INFORMATION
+# SECTION 1: BASIC INFORMATION
 
    Q: WHAT IS PORTAINER_DEPLOY.SH ?
    A: A bash script to deploy portainer in a resource 
@@ -34,9 +32,7 @@ SECTION 1: BASIC INFORMATION
    A: Check .tmp/.admin_data.json. Change the admin password
       after the first login.
 
-#########################################################
-
-SECTION 2: ADVANCED INFORMATIO
+# SECTION 2: ADVANCED INFORMATIO
 
    Q: WHAT DOES PORTAINER_DEPLOY.SH DO ?
    R: Creates a unique self-signed certificate (available under .tmp/certs)
@@ -64,18 +60,16 @@ SECTION 2: ADVANCED INFORMATIO
       - Ex: "./portainer_deploy.sh --port=9003 --version=1.19.2"
       - Ex: "./portainer_deploy.sh --version=1.19.2 --port=9003 --cert=myalias.url"
 
-#########################################################
 
-SECTION 3: LDAP INTEGRATION
+# SECTION 3: LDAP INTEGRATION
 
    Q: HOW TO AUTHENTICATE USING LDAP?  
    A: LDAP integration will be triggered if templates/.settings.json exists.
       templates/.settings.json is a json file with the ldap infrastructure 
       definitions. See the example provided.
  
-#########################################################
 
-SECTION 4: SECURITY
+# SECTION 4: SECURITY
 
     W: The public and private certificate keys are created in '.tmp/certs'. 
        They are needed to communicate via curl to Portainer API. Ensure the 
