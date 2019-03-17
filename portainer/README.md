@@ -83,6 +83,8 @@ W: The public and private certificate keys are created in '.tmp/certs'.
    approproate controls are applied regarding access to that content and 
    consider change it to a protected external location.
 
+---
+
 W: portainer_deploy.sh generates a default admin password to allow a 
    first login, and to be able to generate an Admin Token to allow it
    to communicate via curl to Portainer API (see .tmp/.admin_data.json).

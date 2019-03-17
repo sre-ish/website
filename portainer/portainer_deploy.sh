@@ -1,12 +1,12 @@
 #!/bin/bash
 
 display_help(){
-    echo "Usage: $0 --cert={`hostname -f`} --version={latest} --admin_user={`whoami`} --port={9001}"; echo
+    echo "Usage: $0 --cert={`hostname -f`} --version={latest} --port={9001} --ldap_user={`whoami`}"; echo
     echo " The script accepts 4 arguments:"
-    echo "   --cert:       The name for the certificate generation"
-    echo "   --version:    Portainer version to deploy (ex: 1.20.2)"
-    echo "   --admin_user: The username of the initial administrator"
-    echo "   --port:       The port where the portainer web interface will listening"
+    echo "   --cert:      The DN used for the certificate generation "
+    echo "   --version:   Portainer version to deploy (ex: 1.20.2)"
+    echo "   --port:      The port where the portainer web interface will listen (ex: 9003)"
+    echo "   --ldap_user: An ldap user to be configured as Portainer administrator (only applicable if LDAP is in scope)"
     echo
     exit 1
 }
@@ -18,8 +18,8 @@ portainer_deploy() {
 
   local_name="$1"
   port_version="$2"
-  user_admin="$3"
-  tcp_port="$4"
+  tcp_port="$3"
+  user_admin="$4"
 
   echo "1) Create a unique self-signed certificate" | tee -a $LOG
 
@@ -142,7 +142,7 @@ case $1 in
 *)  
   dn=`hostname -f`
   version="latest"
-  admin_user=`whoami`
+  ldap_user=`whoami`
   port="9001"
   for var in "$@"; do
     if [[ $var =~ --cert=.*$ ]]; then
@@ -153,8 +153,8 @@ case $1 in
       version=`echo $var | cut -f2 -d'='`
     fi
 
-    if [[ $var =~ --admin_user=.*$ ]]; then
-      admin_user=`echo $var | cut -f2 -d'='`
+    if [[ $var =~ --ldap_user=.*$ ]]; then
+      ldap_user=`echo $var | cut -f2 -d'='`
     fi
 
     if [[ $var =~ --port=.*$ ]]; then
@@ -166,7 +166,7 @@ case $1 in
     mkdir -p $CERTS
   fi
 
-  portainer_deploy $dn $version $admin_user $port
+  portainer_deploy $dn $version $port $ldap_user
 ;;
 esac
 
