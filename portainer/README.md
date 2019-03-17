@@ -78,16 +78,27 @@ A: LDAP integration will be triggered if templates/.settings.json exists.
 
 ## SECTION 4: SECURITY
 
-W: The public and private certificate keys are created in '.tmp/certs'. 
-   They are needed to communicate via curl to Portainer API. Ensure the 
-   approproate controls are applied regarding access to that content and 
-   consider change it to a protected external location.
+### WARNING
+The public and private certificate keys are created in '.tmp/certs'. 
+They are needed to communicate via curl to Portainer API. Ensure the 
+approproate controls are applied regarding access to that content and 
+consider change it to a protected external location.
 
 ---
 
-W: portainer_deploy.sh generates a default admin password to allow a 
-   first login, and to be able to generate an Admin Token to allow it
-   to communicate via curl to Portainer API (see .tmp/.admin_data.json).
-   Ensure the approproate controls are applied regarding access to that 
-   content and consider change the admin password on first login.
- 
+# WARNING
+portainer_deploy.sh generates a default admin password to allow a 
+first login, and to be able to generate an Admin Token to allow it
+to communicate via curl to Portainer API (see .tmp/.admin_data.json).
+Ensure the appropriate controls are applied regarding access to that 
+content and consider change the admin password on first login.
+
+---
+
+# WARNING
+By default, the script logs everything to /dev/null. If you need to
+change that setting for troubleshooting purposes, please be aware
+that the log file may potentially capture sensitive information.
+Ensure that the appropriate controls are applied regarding access 
+to that content and consider deleting it once you finish your debug
+activities.
