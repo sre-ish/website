@@ -33,7 +33,9 @@ A: Via "https://FQDN:9001 (for a default instalation)
 ### Q: WHAT LOGIN CREDENTIALS SHOULD I USE ON FIRST LOGIN 
 
 A: Check .tmp/.admin_data.json. Change the admin password
-   after the first login.
+   after the first login or consider to delete this information
+   after a sucessfull definition of an LDAP user as portainer
+   administrator.
 
 ## SECTION 2: ADVANCED INFORMATION
 
@@ -69,36 +71,33 @@ A: Run "./portainer_deploy.sh --help" to understand how to customize the default
 
 ## SECTION 3: LDAP INTEGRATION
 
-### Q: HOW TO AUTHENTICATE USING LDAP?  
+### Q: HOW TO AUTHENTICATE USING LDAP ?  
 
 A: LDAP integration will be triggered if templates/.settings.json exists.
    templates/.settings.json is a json file with the ldap infrastructure 
-   definitions. See the example provided.
- 
+   definitions. It should contain information regarding the user account 
+   (and password) allowed to query the ldap information, the ldap server
+   details and the BASEDN for the search. See the example provided.
+
+### Q : IS IT POSSIBLE TO DEFINE A LDAP USER AS PORTAINER ADMINISTRATOR ?
+
+A: Yes! Use the "--ldap_user=" option. See "./portainer_deploy.sh --help"
+   for details.
 
 ## SECTION 4: SECURITY
 
 ### WARNING
-The public and private certificate keys are created in '.tmp/certs'. 
-They are needed to communicate via curl to Portainer API. Ensure the 
-approproate controls are applied regarding access to that content and 
-consider change it to a protected external location.
+portainer_deploy.sh relies on a couple of files with sensitive information. They are:
+- .tmp/certs: the public and private certificate keys. They are needed to communicate 
+via curl to Portainer API. 
+- .tmp/.admin_data.json: a admin password generated on the flu to allow a the generate 
+of Admin Tokens allowing to communicate via curl to Portainer API. It also allows a first
+login into the web interface.
+- templates/.settings.json: used for the LDAP integration. It holds details of the LDAP
+infrastructure that Portainer will use for A&A purposes. 
+- By default, the script logs to /dev/null. If you need to change that setting for 
+troubleshooting purposes, please be aware that the log file may potentially capture 
+sensitive information.
 
----
-
-# WARNING
-portainer_deploy.sh generates a default admin password to allow a 
-first login, and to be able to generate an Admin Token to allow it
-to communicate via curl to Portainer API (see .tmp/.admin_data.json).
-Ensure the appropriate controls are applied regarding access to that 
-content and consider change the admin password on first login.
-
----
-
-# WARNING
-By default, the script logs everything to /dev/null. If you need to
-change that setting for troubleshooting purposes, please be aware
-that the log file may potentially capture sensitive information.
-Ensure that the appropriate controls are applied regarding access 
-to that content and consider deleting it once you finish your debug
-activities.
+It is your responsibility to ensure that the appropriate controls are applied to the above
+content. Consider moving to other save locations or deleting those contents after instalation.
