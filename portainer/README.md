@@ -3,37 +3,34 @@
 ## SECTION 1: BASIC INFORMATION
 
 Q: WHAT IS PORTAINER_DEPLOY.SH ?
-
 A: A bash script to deploy portainer in a resource 
       such as your labtop or a virtal machine.
 
 ---
 
 Q: WHAT ARE THE REQUIREMENTS TO RUN PORTAINER_DEPLOY.SH ?
-
 A: portainer_deploy.sh assumes that docker service is up
       and running.
 
 ---
 
-   Q: HOW TO RUN PORTAINER_DEPLOY.SH ?
-
+Q: HOW TO RUN PORTAINER_DEPLOY.SH ?
 A: Execute "./portainer_deploy.sh". 
       Execute "./portainer_deploy.sh --help" to understand how
       to run the script with custom options.
 
-   ---
+---
 
-   Q: HOW TO ACCESS PORTAINER WEB INTERFACE ?
-   A: Via "https://<FQDN>:9001 (for a default instalation)
+Q: HOW TO ACCESS PORTAINER WEB INTERFACE ?
+A: Via "https://<FQDN>:9001 (for a default instalation)
 
-   ---
+---
 
-   Q: WHAT LOGIN CREDENTIALS SHOULD I USE ON FIRST LOGIN 
-   A: Check .tmp/.admin_data.json. Change the admin password
+Q: WHAT LOGIN CREDENTIALS SHOULD I USE ON FIRST LOGIN 
+A: Check .tmp/.admin_data.json. Change the admin password
       after the first login.
 
-# SECTION 2: ADVANCED INFORMATIO
+## SECTION 2: ADVANCED INFORMATIO
 
    Q: WHAT DOES PORTAINER_DEPLOY.SH DO ?
    R: Creates a unique self-signed certificate (available under .tmp/certs)
