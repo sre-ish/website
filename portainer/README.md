@@ -3,16 +3,18 @@
 ## SECTION 1: BASIC INFORMATION
 
 Q: WHAT IS PORTAINER_DEPLOY.SH ?
+
 A: A bash script to deploy portainer in a resource 
       such as your labtop or a virtal machine.
 
----
+-
 
 Q: WHAT ARE THE REQUIREMENTS TO RUN PORTAINER_DEPLOY.SH ?
+
 A: portainer_deploy.sh assumes that docker service is up
       and running.
 
----
+-
 
 Q: HOW TO RUN PORTAINER_DEPLOY.SH ?
 A: Execute "./portainer_deploy.sh". 
