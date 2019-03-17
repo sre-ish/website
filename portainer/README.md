@@ -1,8 +1,6 @@
-# DISCLAIMER:                                           #
-# This README file provides information regarding       #
-# the bash script PORTAINER_DEPLOY.SH                   #
+# DISCLAIMER: README file for PORTAINER_DEPLOY.SH
 
-# SECTION 1: BASIC INFORMATION
+## SECTION 1: BASIC INFORMATION
 
 Q: WHAT IS PORTAINER_DEPLOY.SH ?
 
